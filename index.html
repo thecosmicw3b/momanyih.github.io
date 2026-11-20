@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Momanyi Clinton — Physics Graduate & STEM Educator</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Space Grotesk, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-nav: rgba(248, 250, 252, 0.84);
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --accent-lime: #84cc16;
+      --accent-cyan: #0891b2;
+      --grid-line: rgba(15, 23, 42, 0.04);
+      --shadow-card: 0 4px 24px -4px rgba(15, 23, 42, 0.07);
+    }
+
+    html.dark {
+      --bg-primary: #07090e;
+      --bg-secondary: #0d111a;
+      --bg-card: #111622;
+      --bg-nav: rgba(7, 9, 14, 0.84);
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: #1e293b;
+      --accent-lime: #a3e635;
+      --accent-cyan: #22d3ee;
+      --grid-line: rgba(163, 230, 53, 0.035);
+      --shadow-card: 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, sans-serif;
+      background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 48px 48px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .surface-primary { background-color: var(--bg-primary); }
+    .surface-secondary { background-color: var(--bg-secondary); }
+    .surface-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-card);
+    }
+    .text-main { color: var(--text-primary); }
+    .text-sub { color: var(--text-secondary); }
+    .text-dim { color: var(--text-muted); }
+    .border-theme { border-color: var(--border-color); }
+
+    .glass-nav {
+      background-color: var(--bg-nav);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .paddock-gradient {
+      background: linear-gradient(135deg, var(--accent-lime), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-paddock {
+      background: linear-gradient(135deg, #a3e635, #65a30d);
+      color: #07090e;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-paddock:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px -6px rgba(163, 230, 53, 0.4);
+    }
+
+    .portrait-frame {
+      position: relative;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-lime-400 selection:text-slate-950">
+
+  <!-- STICKY HEADER -->
+  <header class="glass-nav fixed top-0 left-0 right-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl btn-paddock flex items-center justify-center font-mono font-bold text-sm tracking-tighter shadow">
+            MC
+          </div>
+          <div>
+            <span class="font-display font-bold text-base sm:text-lg tracking-tight text-main block leading-none">
+              MOMANYI CLINTON
+            </span>
+            <span class="font-mono text-[10px] tracking-widest text-dim uppercase">
+              B.SC. PHYSICS // STEM EDUCATOR
+            </span>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#experience" class="text-sm font-medium text-sub hover:text-main transition-colors">Experience</a>
+          <a href="#projects" class="text-sm font-medium text-sub hover:text-main transition-colors">Research & Skills</a>
+          <a href="#contact" class="text-sm font-medium text-sub hover:text-main transition-colors">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2.5">
+          <button
+            id="themeToggleBtn"
+            aria-label="Toggle Color Theme"
+            class="p-2.5 rounded-xl border border-theme surface-card text-sub hover:text-main transition"
+          >
+            <svg id="sunIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <svg id="moonIcon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+
+          <a href="#contact" class="hidden sm:inline-flex items-center px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider btn-paddock">
+            Get in Touch
+          </a>
+
+          <button
+            id="mobileMenuBtn"
+            aria-label="Toggle Navigation"
+            class="md:hidden p-2.5 rounded-xl border border-theme surface-card text-sub hover:text-main transition"
+          >
+            <svg id="menuOpenIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menuCloseIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobileMenuDrawer" class="hidden md:hidden border-t border-theme surface-primary px-4 pt-3 pb-5 space-y-2">
+      <a href="#experience" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-sub hover:text-main">Experience & Education</a>
+      <a href="#projects" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-sub hover:text-main">Computational Physics & Skills</a>
+      <a href="#contact" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-sub hover:text-main">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section class="pt-28 pb-16 sm:pt-36 sm:pb-24 relative overflow-hidden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full surface-card border border-theme">
+              <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+              <span class="font-mono text-[11px] font-semibold tracking-wider uppercase text-sub">
+                NAKURU, KENYA • OPEN TO STEM & LAB ROLES
+              </span>
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-main">
+              Momanyi Clinton
+              <span class="block text-2xl sm:text-3xl lg:text-4xl mt-2 paddock-gradient">
+                B.Sc. Physics Graduate & STEM Educator
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-sub leading-relaxed max-w-2xl">
+              Physics graduate (<strong class="text-main font-semibold">Second Class Upper Division</strong>, University of Eldoret) with strong foundations in Mathematics, hands-on secondary laboratory management, and Competency-Based Curriculum (CBC) instruction. Outside the lab, I follow motorsport telemetry, hike Rift Valley trails, and shoot landscape photography.
+            </p>
+
+            <!-- Action Buttons (Download CV removed) -->
+            <div class="flex flex-wrap items-center gap-3.5 pt-2">
+              <a href="#experience" class="px-6 py-3.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider btn-paddock">
+                Explore Experience
+              </a>
+              <a href="#contact" class="px-6 py-3.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider surface-card text-main hover:border-lime-400 transition">
+                Contact
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Portrait Card -->
+          <div class="lg:col-span-5">
+            <div class="surface-card rounded-3xl p-4 sm:p-5 relative max-w-md mx-auto">
+              <div class="flex items-center justify-between pb-3 mb-3 border-b border-theme font-mono text-[11px] text-dim">
+                <span class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-lime-400"></span>
+                  DRIVER / GRADUATE FILE
+                </span>
+                <span>UOE CLASS OF '25</span>
+              </div>
+
+              <div class="portrait-frame rounded-2xl aspect-[4/5] bg-slate-900 relative flex items-center justify-center border border-theme">
+                <img
+                  id="heroPortraitImg"
+                  src="SAVE_20251120_114005.jpg"
+                  alt="Momanyi Clinton in graduation gown"
+                  class="w-full h-full object-cover object-top"
+                  onerror="handleHeroImageFallback(this)"
+                />
+                <div id="heroPortraitFallback" class="hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950">
+                  <div class="w-16 h-16 rounded-2xl btn-paddock flex items-center justify-center font-display font-bold text-2xl mb-3 shadow-lg">
+                    MC
+                  </div>
+                  <p class="font-display font-bold text-white text-base">Momanyi Clinton</p>
+                  <p class="font-mono text-xs text-lime-400 mt-1">SAVE_20251120_114005.jpg</p>
+                  <p class="text-xs text-slate-400 mt-2 max-w-xs">
+                    Keep <code class="text-slate-200">SAVE_20251120_114005.jpg</code> in the repository root to display your portrait here.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pt-3.5 flex items-center justify-between text-xs">
+                <div>
+                  <span class="font-semibold text-main block">B.Sc. Physics • STEM & Lab Instruction</span>
+                  <span class="font-mono text-[11px] text-dim">English (Fluent) • Swahili (Good)</span>
+                </div>
+                <span class="font-mono text-[11px] px-2.5 py-1 rounded-lg bg-lime-400/15 text-lime-400 font-semibold">
+                  AVAILABLE
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. EXPERIENCE & EDUCATION TIMELINE -->
+    <section id="experience" class="py-20 surface-secondary border-y border-theme">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-12">
+          <span class="font-mono text-xs font-bold uppercase tracking-widest text-lime-400">
+            01 // TRACK RECORD
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-main mt-1">
+            Teaching Experience & Academic Background
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="surface-card rounded-2xl p-6 sm:p-7 relative border-l-4 border-l-lime-400">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-lime-400/15 text-lime-400">
+                  26th January – 26th April (3 Months)
+                </span>
+                <span class="font-mono text-xs text-dim">Senior Secondary School</span>
+              </div>
+
+              <h3 class="font-display text-xl font-bold text-main">
+                Graduate Lab Assistant
+              </h3>
+              <p class="text-xs font-mono text-cyan-400 mt-0.5 mb-4">
+                LABORATORY MANAGEMENT • CBC PRACTICALS • ICT INTEGRATION
+              </p>
+
+              <ul class="space-y-2.5 text-sm text-sub leading-relaxed">
+                <li class="flex items-start gap-2.5">
+                  <span class="text-lime-400 font-bold mt-0.5">▹</span>
+                  <span><strong class="text-main">Classroom & Lab Management:</strong> Oversaw laboratory safety and organization, ensuring a productive environment for Junior Secondary students during practical lessons.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-lime-400 font-bold mt-0.5">▹</span>
+                  <span><strong class="text-main">Student Mentorship:</strong> Guided students through complex science experiments, translating theoretical concepts into practical understanding.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-lime-400 font-bold mt-0.5">▹</span>
+                  <span><strong class="text-main">Instructional Support:</strong> Assisted in delivering lesson content by simplifying experimental procedures and troubleshooting student queries.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-lime-400 font-bold mt-0.5">▹</span>
+                  <span><strong class="text-main">ICT Integration:</strong> Leveraged computer skills to organize lab data and research modern scientific experiments for classroom demonstration.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="surface-card rounded-2xl p-6 sm:p-7 relative border-l-4 border-l-cyan-400">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-cyan-400/15 text-cyan-400">
+                  High School Level
+                </span>
+                <span class="font-mono text-xs text-dim">Physics & Mathematics</span>
+              </div>
+
+              <h3 class="font-display text-xl font-bold text-main">
+                Volunteer Tutor
+              </h3>
+              <p class="text-xs font-mono text-cyan-400 mt-0.5 mb-4">
+                ACADEMIC SUPPORT • EXAM PREPARATION • STEM MENTORSHIP
+              </p>
+
+              <ul class="space-y-2.5 text-sm text-sub leading-relaxed">
+                <li class="flex items-start gap-2.5">
+                  <span class="text-cyan-400 font-bold mt-0.5">▹</span>
+                  <span><strong class="text-main">Academic Support:</strong> Provided personalized instruction in physics and mathematics, helping students master core topics and improve exam performance.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-cyan-400 font-bold mt-0.5">▹</span>
+                  <span><strong class="text-main">Mentorship:</strong> Acted as a role model for students, encouraging interest in STEM subjects and providing guidance on effective study habits.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="projects" class="lg:col-span-5 space-y-6">
+            <div class="surface-card rounded-2xl p-6 sm:p-7">
+              <div class="flex items-center justify-between mb-3">
+                <span class="font-mono text-xs font-bold uppercase tracking-wider text-cyan-400">EDUCATION</span>
+                <span class="font-mono text-xs px-2.5 py-1 rounded-lg surface-secondary border border-theme text-main">
+                  2021 – 2025
+                </span>
+              </div>
+
+              <h3 class="font-display text-xl font-bold text-main">
+                Bachelor of Science in Physics
+              </h3>
+              <p class="text-sm font-medium text-sub mt-1">University of Eldoret</p>
+              <div class="inline-block mt-2.5 px-3 py-1 rounded-lg bg-lime-400/15 text-lime-400 font-mono text-xs font-semibold">
+                Grade: Second Class Upper Division
+              </div>
+
+              <div class="mt-5 pt-4 border-t border-theme">
+                <div class="font-mono text-[11px] uppercase tracking-wider text-dim mb-2.5">
+                  Relevant Coursework
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="text-xs px-3 py-1.5 rounded-lg surface-secondary border border-theme text-sub">Advanced Mathematics</span>
+                  <span class="text-xs px-3 py-1.5 rounded-lg surface-secondary border border-theme text-sub">Electrodynamics</span>
+                  <span class="text-xs px-3 py-1.5 rounded-lg surface-secondary border border-theme text-sub">Quantum Mechanics</span>
+                  <span class="text-xs px-3 py-1.5 rounded-lg surface-secondary border border-theme text-sub">Circuit Analysis</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="surface-card rounded-2xl p-6 sm:p-7">
+              <div class="flex items-center justify-between mb-3">
+                <span class="font-mono text-xs font-bold uppercase tracking-wider text-lime-400">TECHNICAL RESEARCH</span>
+                <span class="font-mono text-xs text-dim">Final Year Project</span>
+              </div>
+
+              <h3 class="font-display text-xl font-bold text-main">
+                Computational Physics Analysis
+              </h3>
+              <p class="text-xs font-mono text-dim mt-0.5 mb-3">University of Eldoret</p>
+              <p class="text-sm text-sub leading-relaxed">
+                Conducted advanced structural and electronic analysis using computational modeling techniques, applying numerical methods, high-level mathematics, and physical simulation principles.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Competencies Matrix -->
+        <div class="mt-10 surface-card rounded-2xl p-6 sm:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+            <div>
+              <span class="font-mono text-xs font-bold uppercase tracking-wider text-cyan-400">CORE CAPABILITIES</span>
+              <h3 class="font-display text-xl font-bold text-main mt-0.5">Technical, Laboratory & Pedagogical Skills</h3>
+            </div>
+            <span class="font-mono text-xs text-dim">CBC ALIGNED // LINUX & PYTHON READY</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="p-4 rounded-xl surface-secondary border border-theme">
+              <div class="font-mono text-xs font-bold text-lime-400 uppercase mb-2">Subject Expertise</div>
+              <ul class="space-y-1.5 text-sm text-sub">
+                <li>• Senior & Junior Physics</li>
+                <li>• Applied Mathematics</li>
+                <li>• CBC Practical Instruction</li>
+                <li>• Circuit & Quantum Theory</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-xl surface-secondary border border-theme">
+              <div class="font-mono text-xs font-bold text-cyan-400 uppercase mb-2">ICT & Computing</div>
+              <ul class="space-y-1.5 text-sm text-sub">
+                <li>• Python (Beginner)</li>
+                <li>• Linux (Ubuntu) Environment</li>
+                <li>• MS Office Suite</li>
+                <li>• Lab Data & Research Tools</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-xl surface-secondary border border-theme">
+              <div class="font-mono text-xs font-bold text-emerald-400 uppercase mb-2">Classroom & Lab</div>
+              <ul class="space-y-1.5 text-sm text-sub">
+                <li>• Laboratory Safety & Setup</li>
+                <li>• Lesson Facilitation</li>
+                <li>• Student Assessment</li>
+                <li>• Experimental Troubleshooting</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-xl surface-secondary border border-theme">
+              <div class="font-mono text-xs font-bold text-amber-400 uppercase mb-2">Communication</div>
+              <ul class="space-y-1.5 text-sm text-sub">
+                <li>• Student Mentorship</li>
+                <li>• Problem-Solving & Teamwork</li>
+                <li>• English (Fluent)</li>
+                <li>• Swahili (Good)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. DIRECT CONTACT SECTION -->
+    <section id="contact" class="py-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="font-mono text-xs font-bold uppercase tracking-widest text-lime-400">
+            02 // DIRECT CONTACT
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-main mt-1">
+            Get in Touch
+          </h2>
+          <p class="text-sm sm:text-base text-sub mt-2">
+            Available for Secondary School Physics & Mathematics teaching positions, Laboratory Assistant roles, STEM tutoring, or collaborative projects.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-5 space-y-4">
+            <div class="surface-card rounded-2xl p-5 flex items-center justify-between gap-4">
+              <div>
+                <div class="font-mono text-[11px] uppercase tracking-wider text-dim">Direct Phone / WhatsApp</div>
+                <a href="tel:0112323230" class="font-display text-lg font-bold text-main hover:text-lime-400 transition block mt-0.5">
+                  0112323230
+                </a>
+              </div>
+              <button
+                type="button"
+                data-copy="0112323230"
+                class="copy-btn px-3 py-2 rounded-xl font-mono text-xs surface-secondary border border-theme text-sub hover:text-main transition"
+              >
+                Copy
+              </button>
+            </div>
+
+            <div class="surface-card rounded-2xl p-5 flex items-center justify-between gap-4">
+              <div class="min-w-0">
+                <div class="font-mono text-[11px] uppercase tracking-wider text-dim">Email Address</div>
+                <a href="mailto:momanyiclinton766@gmail.com" class="font-display text-sm sm:text-base font-bold text-main hover:text-lime-400 transition block mt-0.5 truncate">
+                  momanyiclinton766@gmail.com
+                </a>
+              </div>
+              <button
+                type="button"
+                data-copy="momanyiclinton766@gmail.com"
+                class="copy-btn shrink-0 px-3 py-2 rounded-xl font-mono text-xs surface-secondary border border-theme text-sub hover:text-main transition"
+              >
+                Copy
+              </button>
+            </div>
+
+            <div class="surface-card rounded-2xl p-5">
+              <div class="font-mono text-[11px] uppercase tracking-wider text-dim">Current Base</div>
+              <div class="font-display text-lg font-bold text-main mt-0.5">Nakuru, Kenya</div>
+              <p class="text-xs text-sub mt-1">Open to opportunities in Nakuru and across Kenya.</p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 surface-card rounded-3xl p-6 sm:p-8">
+            <form id="contactForm" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="senderName" class="block font-mono text-[11px] uppercase tracking-wider text-sub mb-1.5">Your Name *</label>
+                  <input
+                    id="senderName"
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="Principal / Recruiter / Colleague"
+                    class="w-full px-4 py-3 rounded-xl border border-theme surface-secondary text-main text-sm focus:outline-none focus:border-lime-400"
+                  />
+                </div>
+                <div>
+                  <label for="senderEmail" class="block font-mono text-[11px] uppercase tracking-wider text-sub mb-1.5">Your Email *</label>
+                  <input
+                    id="senderEmail"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="name@school-or-org.com"
+                    class="w-full px-4 py-3 rounded-xl border border-theme surface-secondary text-main text-sm focus:outline-none focus:border-lime-400"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="senderSubject" class="block font-mono text-[11px] uppercase tracking-wider text-sub mb-1.5">Subject</label>
+                <select
+                  id="senderSubject"
+                  name="subject"
+                  class="w-full px-4 py-3 rounded-xl border border-theme surface-secondary text-main text-sm focus:outline-none focus:border-lime-400"
+                >
+                  <option value="Teaching / Lab Assistant Opportunity">Teaching / Lab Assistant Opportunity</option>
+                  <option value="Private Physics & Math Tutoring">Private Physics & Math Tutoring</option>
+                  <option value="STEM / Computational Physics Collaboration">STEM / Computational Physics Collaboration</option>
+                  <option value="General Message">General Message</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="senderMessage" class="block font-mono text-[11px] uppercase tracking-wider text-sub mb-1.5">Message *</label>
+                <textarea
+                  id="senderMessage"
+                  name="message"
+                  rows="3"
+                  required
+                  placeholder="Write your message here..."
+                  class="w-full px-4 py-3 rounded-xl border border-theme surface-secondary text-main text-sm focus:outline-none focus:border-lime-400 resize-none"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider btn-paddock cursor-pointer">
+                Send Inquiry
+              </button>
+            </form>
+
+            <div id="formFeedback" class="hidden mt-4 p-4 rounded-xl bg-lime-400/10 border border-lime-400/30 text-lime-300 text-xs font-mono">
+              Opening your email app to send the message to Momanyi Clinton...
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="surface-secondary border-t border-theme py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-dim">
+      <div>© 2026 MOMANYI CLINTON — NAKURU, KENYA</div>
+      <div>B.SC. PHYSICS // STEM EDUCATION // LABORATORY MANAGEMENT</div>
+    </div>
+  </footer>
+
+  <div id="copyToast" class="hidden fixed bottom-5 right-5 z-50 px-4 py-2.5 rounded-xl bg-lime-500 text-slate-950 font-mono font-semibold text-xs shadow-lg">
+    Copied to clipboard!
+  </div>
+
+  <script>
+    const htmlEl = document.documentElement;
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+
+    function applyTheme(isDark) {
+      htmlEl.classList.toggle('dark', isDark);
+      sunIcon.classList.toggle('hidden', !isDark);
+      moonIcon.classList.toggle('hidden', isDark);
+      localStorage.setItem('mc-theme', isDark ? 'dark' : 'light');
+    }
+
+    const storedTheme = localStorage.getItem('mc-theme');
+    applyTheme(storedTheme ? storedTheme === 'dark' : true);
+
+    themeToggleBtn.addEventListener('click', () => {
+      applyTheme(!htmlEl.classList.contains('dark'));
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+    const menuOpenIcon = document.getElementById('menuOpenIcon');
+    const menuCloseIcon = document.getElementById('menuCloseIcon');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const opening = mobileMenuDrawer.classList.contains('hidden');
+      mobileMenuDrawer.classList.toggle('hidden', !opening);
+      menuOpenIcon.classList.toggle('hidden', opening);
+      menuCloseIcon.classList.toggle('hidden', !opening);
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuDrawer.classList.add('hidden');
+        menuOpenIcon.classList.remove('hidden');
+        menuCloseIcon.classList.add('hidden');
+      });
+    });
+
+    function handleHeroImageFallback(imgEl) {
+      imgEl.classList.add('hidden');
+      document.getElementById('heroPortraitFallback').classList.remove('hidden');
+    }
+
+    const copyToast = document.getElementById('copyToast');
+    let toastTimer;
+
+    function showToast(message) {
+      copyToast.textContent = message;
+      copyToast.classList.remove('hidden');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        copyToast.classList.add('hidden');
+      }, 2200);
+    }
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const text = btn.getAttribute('data-copy');
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast(`Copied: ${text}`);
+        } catch {
+          const tempInput = document.createElement('input');
+          tempInput.value = text;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+          showToast(`Copied: ${text}`);
+        }
+      });
+    });
+
+    const contactForm = document.getElementById('contactForm');
+    const formFeedback = document.getElementById('formFeedback');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value.trim();
+      const email = document.getElementById('senderEmail').value.trim();
+      const subject = document.getElementById('senderSubject').value;
+      const message = document.getElementById('senderMessage').value.trim();
+
+      const bodyLines = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        '',
+        message
+      ].join('\n');
+
+      const mailtoUrl = `mailto:momanyiclinton766@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines)}`;
+      formFeedback.classList.remove('hidden');
+      window.location.href = mailtoUrl;
+    });
+  </script>
+</body>
+</html>
