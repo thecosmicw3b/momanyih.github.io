@@ -110,6 +110,24 @@
       overflow: hidden;
     }
   </style>
+    @media print {
+      .no-print,
+      button,
+      form,
+      nav {
+        display: none !important;
+      }
+
+      body {
+        background: #ffffff !important;
+        color: #090d16 !important;
+      }
+
+      @page {
+        margin: 12mm;
+      }
+    }
+  </style>
 </head>
 <body class="antialiased selection:bg-lime-400 selection:text-slate-950">
 
@@ -471,7 +489,13 @@
               Scan or Tap for portfolio Link
             </span>
           </a>
-
+          <button
+            type="button"
+            onclick="window.print()"
+            class="no-print mt-4 inline-flex items-center gap-2 rounded-lg border border-lime-400/50 bg-slate-900 px-4 py-2 font-mono text-xs uppercase tracking-wider text-lime-400 transition hover:bg-lime-400 hover:text-slate-950"
+          >
+            Print / Save PDF
+          </button>
           
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div class="lg:col-span-5 space-y-4">
