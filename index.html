@@ -712,5 +712,31 @@
       window.location.href = mailtoUrl;
     });
   </script>
+  <!-- Back to Top Button -->
+  <button
+    id="backToTop"
+    type="button"
+    aria-label="Back to top"
+    class="no-print fixed bottom-5 right-5 z-50 hidden items-center justify-center rounded-xl border border-theme surface-card px-3.5 py-2.5 font-mono text-xs uppercase tracking-wider text-lime-400 shadow-lg transition hover:border-lime-400"
+  >
+    ↑ Top
+  </button>
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.remove('hidden');
+        backToTopBtn.classList.add('flex');
+      } else {
+        backToTopBtn.classList.add('hidden');
+        backToTopBtn.classList.remove('flex');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
